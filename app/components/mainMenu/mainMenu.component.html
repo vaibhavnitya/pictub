@@ -1,0 +1,21 @@
+<div>
+    <div class="main-menu-div">
+        <div (click)="addImageClick()" class="main-options">
+            <div>Add Image</div>
+        </div>
+        <div class="main-options">
+            <div>List Image</div>
+        </div>
+        <div (click)="toggleProfileMenu()" id="profile" class="main-options">
+            <div class="profile">Profile</div>
+        </div>
+    </div>
+    <div  *ngIf="showProfileOptions" id="profile-menu" class="profile-menu">
+        <div class="profile-menu-image-div">
+            <img class="profile-menu-image" src="app/assets/images/profile.png" alt="">
+        </div>
+        <div class="signout-button-div">
+            <input type="button" value="Sign Out" class="signout-button">
+        </div>
+    </div>
+</div>

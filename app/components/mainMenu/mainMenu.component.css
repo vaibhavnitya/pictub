@@ -1,0 +1,46 @@
+.main-options {
+    display: inline-block;
+    width: 33%;
+    border: 1px solid #848181;
+    padding: 10px;
+}
+
+.main-menu-div {
+    padding: 10px;
+}
+
+#profile {
+    position: relative;
+}
+.profile-menu {
+    height: 220px;
+    position: absolute;
+    background-color: #d0cfcf;
+    width: 190px;
+    opacity: 0.7;
+    right: 10%;
+}
+
+.profile-menu-image-div {
+    width: inherit;
+    height: 170px;
+    padding-left: 34px;
+    padding-top: 20px;
+}
+
+.profile-menu-image {
+    height: 120px;
+    width: 120px;
+}
+
+.signout-button-div {
+    height: 30px;
+    text-align: center;
+}
+
+.signout-button {
+    width: 120px;
+    text-align: center;
+    font-size: 15px;
+}
+    

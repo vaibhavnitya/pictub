@@ -1,45 +1,28 @@
-var path = require('path');
-var webpack = require('webpack');
-var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+var webpack = require("webpack");
 
 module.exports = {
-  devtool: 'source-map',
-  debug: true,
-
   entry: {
-    'angular2': [
-      'rxjs',
-      'reflect-metadata',
-      '@angular/core'
-    ],
-    'app': './app/app'
+    "vendor": "./app/vendor",
+    "app": "./app/main"
   },
-
   output: {
-    path: __dirname + '/build/',
-    publicPath: 'build/',
-    filename: '[name].js',
-    sourceMapFilename: '[name].js.map',
-    chunkFilename: '[id].chunk.js'
+    path: __dirname,
+    filename: "./dist/[name].bundle.js"
   },
-
   resolve: {
-    extensions: ['','.ts','.js','.json', '.css', '.html']
+    extensions: ['', '.ts', '.js']
   },
-
+  devtool: 'source-map',
   module: {
     loaders: [
       {
-        test: /\.ts$/,
-        loader: 'ts',
-        exclude: [ /node_modules/ ]
+        test: /\.ts/,
+        loaders: ['ts-loader'],
+        exclude: /node_modules/
       }
     ]
   },
-
   plugins: [
-    new CommonsChunkPlugin({ name: 'angular2', filename: 'angular2.js', minChunks: Infinity }),
-    new CommonsChunkPlugin({ name: 'common',   filename: 'common.js' })
-  ],
-  target:'node-webkit'
-};
+    new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"./dist/vendor.bundle.js")
+  ]
+}

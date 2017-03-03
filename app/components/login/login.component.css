@@ -1,0 +1,31 @@
+.login-div {
+    text-align: center;
+}
+
+.input {
+    font-size: 16px;
+    background-color: #efefef;
+    border: 1px solid #656565;
+    height: 35px;
+    width: 270px;
+    padding: 12px;
+    margin-left: 20px;
+}
+
+.text {
+    display: inline-block;
+    font-size: 20px;
+    margin: 5px;
+    width: 120px;
+}
+
+.input-div {
+    height: 60px;
+}
+
+.login-button {
+    width: 200px;
+    font-size: 16px;
+    padding: 5px;
+    margin-top: 10px;
+}

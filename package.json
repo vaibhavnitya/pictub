@@ -2,33 +2,35 @@
   "name": "pictub",
   "version": "1.0.0",
   "description": "A cloud application to manage images",
+  "main": "main.js",
   "scripts": {
-    "build": "webpack --progress --profile --colors --display-error-details --display-cached",
-    "watch": "webpack --watch --progress --profile --colors --display-error-details --display-cached",
-    "electron": "electron app"
+    "postinstall": "typings install",
+    "build": "webpack",
+    "watch": "webpack --progress --colors --watch",
+    "start": "webpack-dev-server",
+    "native": "electron ."
   },
   "author": "Vaibhav N",
   "license": "MIT",
+  "dependencies": {
+    "@angular/common": "2.0.0",
+    "@angular/compiler": "2.0.0",
+    "@angular/core": "2.0.0",
+    "@angular/forms": "2.0.0",
+    "@angular/http": "2.0.0",
+    "@angular/platform-browser": "2.0.0",
+    "@angular/platform-browser-dynamic": "2.0.0",
+    "@angular/router": "3.0.0",
+    "reflect-metadata": "^0.1.3",
+    "rxjs": "5.0.0-beta.12",
+    "zone.js": "^0.6.23"
+  },
   "devDependencies": {
     "electron-prebuilt": "^1.2.0",
-    "es6-shim": "^0.35.0",
-    "ts-loader": "^0.8.2",
-    "typescript": "^1.8.10",
-    "typings": "^0.8.1",
-    "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0"
-  },
-  "dependencies": {
-    "@angular/common": "2.0.0-rc.1",
-    "@angular/compiler": "2.0.0-rc.1",
-    "@angular/core": "2.0.0-rc.1",
-    "@angular/http": "2.0.0-rc.1",
-    "@angular/platform-browser": "2.0.0-rc.1",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.1",
-    "@angular/router": "2.0.0-rc.1",
-    "reflect-metadata": "0.1.3",
-    "rxjs": "5.0.0-beta.6",
-    "systemjs": "0.19.26",
-    "zone.js": "^0.6.12"
+    "ts-loader": "0.8.2",
+    "typescript": "1.8.10",
+    "typings": "1.3.0",
+    "webpack": "1.13.0",
+    "webpack-dev-server": "1.14.1"
   }
 }
