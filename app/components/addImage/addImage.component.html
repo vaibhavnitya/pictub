@@ -1,5 +1,32 @@
-<h1>This is the add Image Component</h1>
-<h4>Total Images: {{ imageStats().count }}</h4>
+<div>
+    <div>
+        <div *ngIf="!isImageSelected" class="add-file">
+            <input class="add-file-input" type="file" (change)="addFile($event)">
+            <p class="add-file-text">Add or Drop Image</p>
+        </div>
+        <div *ngIf="isImageSelected" class="preview">
+            <img class="preview-image" [src]="sanitize(addedImage)" alt="">
+        </div>
+    </div>
+    <div *ngIf="isImageSelected">
+        <div class="change-file">
+            <input class="change-file-input" type="file" (change)="addFile($event)">
+            <p class="change-file-text">add or drop to change image</p>
+        </div>
+        <div class="image-details">
+            <div class="title-div">
+                Title:
+                <input type="text" class="title" value={{addedImageName}} (input)="addedImageName = $event.target.value"> 
+            </div>
+            <div class="save-button-div">
+                <input type="button" value="SAVE" class="save-button" (click)="saveImage()">
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<!--<h4>Total Images: {{ imageStats().count }}</h4>
 <h4>Total Size: {{ imageStats().size | byteFormat}}</h4>
 
 <div
@@ -22,4 +49,5 @@
     <h4 class="">{{image.name}}</h4>
     <p>{{image.size | byteFormat}}</p>
     </div>
-</div>
+</div>-->
+

@@ -12,6 +12,7 @@ export class mainMenuComponent {
 
   // export the click evets to the parent
   @Output() menuClick: EventEmitter<string> = new EventEmitter<string>();
+  
   // variable to show the profile options
   showProfileOptions: boolean = false;
 

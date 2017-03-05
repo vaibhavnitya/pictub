@@ -10,17 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class layoutComponent {
 
-  isLoggedIn: boolean = false;
+  showLoginWindow: boolean = true;
 
   ngOnInit() {
-    this.checkLoginStatus();
+    //this.checkLoginStatus(false);
   }
 
   /**
    * check login status of the user
    */
-  checkLoginStatus() {
-    this.isLoggedIn = false;
+  checkLoginStatus(status) {
+    if (status) {
+      this.showLoginWindow = false;
+    }
   }
 
 }

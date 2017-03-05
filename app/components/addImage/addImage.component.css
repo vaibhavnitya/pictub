@@ -1,0 +1,97 @@
+.add-file {
+    height: 150px;
+    width: 300px;
+    border: 1px solid black;
+    margin-left: 40%;
+    position: relative;
+    padding: 10px;
+}
+
+.add-file-input {
+    height: 130px;
+    width: 280px;
+    position: absolute;
+    opacity: 0;
+    z-index: 100;
+}
+
+.add-file-text {
+    height: 130px;
+    width: 280px;
+    position: absolute;
+    margin: 0;
+    font-size: 32px;
+    padding: 10px;
+    text-align: center;
+    background: #d4cdca;
+    font-family: monospace;
+}
+
+.preview {
+    text-align: center;
+    padding: 3%;
+}
+
+.preview-image {
+    width: 630px;
+    height: 350px;
+}
+
+.change-file {
+    height: 80px;
+    width: 320px;
+    border: 1px solid black;
+    margin-left: 37%;
+    position: relative;
+    padding: 10px;
+}
+
+.change-file-input {
+    height: 58px;
+    width: 297px;
+    position: absolute;
+    opacity: 0;
+    z-index: 100;
+}
+
+.change-file-text {
+    height: 58px;
+    width: 297px;
+    position: absolute;
+    margin: 0;
+    font-size: 18px;
+    padding: 6px;
+    text-align: center;
+    background: #d4cdca;
+    font-family: monospace;
+}
+
+.title-div {
+    display: inline-block;
+    font-size: 26px;
+}
+
+.title {
+    font-size: 20px;
+    width: 300px;
+    height: 40px;
+    padding: 5px;
+    background: #e4e4e4;
+}
+
+.image-details {
+    text-align: center;
+    padding: 15px;
+}
+
+.save-button-div {
+    display: inline-block;
+    padding-left: 10%;
+}
+
+.save-button {
+    height: 32px;
+    width: 125px;
+    font-size: 20;
+    border: 1px solid #908e8e;
+}

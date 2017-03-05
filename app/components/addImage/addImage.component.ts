@@ -12,12 +12,32 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class addImageComponent {
  
     images:Array <Object> = [];
-
-    constructor(private sanitizer:DomSanitizer){}
     
-    sanitize(url:string){
-        return this.sanitizer.bypassSecurityTrustUrl(url);
+    isImageSelected: boolean = false;   // to check if any image is been selected
+    addedImage: string = null;          // path of preview image
+    addedImageName: string = null;      // image name
+    
+    // to check if the changes in add files
+    addFile(e) {
+        if (e.target.files && e.target.files.length) {
+            let file = e.target.files[0];
+            if (file.path) {
+                this.addedImage = file.path;
+                if (file.name) {
+                    this.addedImageName = file.name;
+                }
+                this.isImageSelected = true;
+            }
+        }
     }
+
+    // function to save the images
+    saveImage() {
+        if (this.addedImage && this.addedImageName) {
+            this.isImageSelected = false;
+        }
+    }
+    
 
     handleDrop(e) {
         var files:File = e.dataTransfer.files;
@@ -53,9 +73,11 @@ export class addImageComponent {
 
     }
 
-    logger(data) {
-        console.log(data);
-
+    // DOM sanitizer to bypass the image URL
+    constructor(private sanitizer:DomSanitizer){}
+    
+    sanitize(url:string){
+        return this.sanitizer.bypassSecurityTrustUrl(url);
     }
 
 }

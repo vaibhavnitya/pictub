@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 
 /**
@@ -13,9 +13,14 @@ export class loginComponent {
 
     constructor(public AuthenticationService: AuthenticationService) {}
 
+    // generic Instantiate event EventEmitter
+    @Output() isLoggedIn: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+
     loginSubmit() {
         console.log('login submit clicked');
         this.AuthenticationService.login();
+        this.isLoggedIn.emit(true);
         return false;
     }
  }
