@@ -1,7 +1,8 @@
 //import {bootstrap} from '@angular/platform-browser-dynamic';
 import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
-import {DomSanitizer} from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
+// var copy = require('copy');
 
 @Component({
     selector: 'st-add-image',
@@ -16,11 +17,13 @@ export class addImageComponent {
     isImageSelected: boolean = false;   // to check if any image is been selected
     addedImage: string = null;          // path of preview image
     addedImageName: string = null;      // image name
+    addedImageObject: Object = null;      // image added object
     
     // to check if the changes in add files
     addFile(e) {
         if (e.target.files && e.target.files.length) {
             let file = e.target.files[0];
+            this.addedImageObject = e.target.files[0];
             if (file.path) {
                 this.addedImage = file.path;
                 if (file.name) {
@@ -34,6 +37,8 @@ export class addImageComponent {
     // function to save the images
     saveImage() {
         if (this.addedImage && this.addedImageName) {
+            // let file:any = this.addedImageObject;
+            // copy(file.path, './images/'+file.name);
             this.isImageSelected = false;
         }
     }
