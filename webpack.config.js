@@ -10,7 +10,7 @@ module.exports = {
     filename: "./dist/[name].bundle.js"
   },
   resolve: {
-    extensions: ['', '.ts', '.js']
+    extensions: ['', '.ts', '.js', '.json']
   },
   devtool: 'source-map',
   module: {
@@ -19,11 +19,26 @@ module.exports = {
         test: /\.ts/,
         loaders: ['ts-loader'],
         exclude: /node_modules/
-      }
+      },
+      {
+          test: '/\.json/',
+          loader: 'json',
+      },
+
+      {
+          test: '/\.node$/',
+          loader: 'node-loader',
+      },
+      {
+          test: /\.json$/,
+          loader: "json"
+        }
     ]
   },
   node: {
-    fs: 'empty'
+    fs: 'empty',
+    __filename: false,
+    __dirname: false
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"./dist/vendor.bundle.js")

@@ -2,7 +2,6 @@
 import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
-// var copy = require('copy');
 
 @Component({
     selector: 'st-add-image',
@@ -36,10 +35,25 @@ export class addImageComponent {
 
     // function to save the images
     saveImage() {
-        if (this.addedImage && this.addedImageName) {
-            // let file:any = this.addedImageObject;
-            // copy(file.path, './images/'+file.name);
-            this.isImageSelected = false;
+        let file: any = this.addedImageObject;
+        let imageDir: string = __dirname;
+        let destPath: string;
+        let self: any = this;
+        imageDir = imageDir.replace(/\\/g,'/') + '/images/';
+        if (file && file.path) {
+            destPath = imageDir + this.addedImageName;
+            fs.stat(destPath, function(err, stat) {
+                if(err == null) {
+                    console.log('File exists');
+                } else if(err.code == 'ENOENT') {
+                    // file does not exist
+                    fs.createReadStream(file.path).pipe(fs.createWriteStream(destPath));
+                    self.isImageSelected = false;
+                    
+                } else {
+                    console.log('Some other error: ', err.code);
+                }
+            });
         }
     }
     

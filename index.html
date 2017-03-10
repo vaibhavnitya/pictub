@@ -8,6 +8,13 @@
   <body>
     <my-app>Loading...</my-app>
   </body>
+  <script>
+    if (require) {
+       // window.$ = window.jQuery = require('./app/assets/js/jquery.min.js');
+        window.fs = require('fs');
+        window.path = require('path');
+    }
+</script>
   <script src="dist/vendor/bootstrap.min.js"></script>
   <link href="dist/vendor/bootstrap.min.css" rel="stylesheet">   
   <script src="dist/vendor.bundle.js"></script>
