@@ -1,0 +1,48 @@
+<div class="list-images">
+    <div class="list-header">
+        <div class="all-files-details">
+            Total file size
+        </div>
+        <div class="sort-options">
+            <div>
+                Sort by
+            </div>
+            <div>
+                <select>
+                    <option value="none">None</option>
+                    <option value="decreasingDate">Decreasing date</option>
+                    <option value="increasingDate">Increasing date</option>
+                    <option value="increasingFileSize">Increasing File size</option>
+                    <option value="decreasingFileSize">Decreasing File size</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="list-div">
+        <ul class="list">
+            <li class="list-items" *ngFor="let file of allFiles">
+                <div>
+                    <div class="list-name">
+                        {{file.name}}
+                    </div>
+                    <div class="list-image">
+                        <img class="list-image-img" [src]="sanitize(file.path)" alt="">
+                    </div>
+                    <div class="list-date">
+                        {{file.ctime}}
+                    </div>
+                    <div class="list-size">
+                        {{file.size}}
+                    </div>
+                    <div class="list-action">
+                        <p>EDIT</p>
+                        <p>DELETE</p>
+                    </div>
+                </div>
+                <div>
+                    <hr>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

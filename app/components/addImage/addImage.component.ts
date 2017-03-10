@@ -1,5 +1,4 @@
-//import {bootstrap} from '@angular/platform-browser-dynamic';
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -10,6 +9,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 
 export class addImageComponent {
+
+    // constructor declarations    
+    constructor(private sanitizer:DomSanitizer, private ngZone: NgZone){}
  
     images:Array <Object> = [];
     
@@ -38,7 +40,7 @@ export class addImageComponent {
         let file: any = this.addedImageObject;
         let imageDir: string = __dirname;
         let destPath: string;
-        let self: any = this;
+        var self: any = this;
         imageDir = imageDir.replace(/\\/g,'/') + '/images/';
         if (file && file.path) {
             destPath = imageDir + this.addedImageName;
@@ -46,17 +48,20 @@ export class addImageComponent {
                 if(err == null) {
                     console.log('File exists');
                 } else if(err.code == 'ENOENT') {
-                    // file does not exist
+                    // file does not exist hence can create new
                     fs.createReadStream(file.path).pipe(fs.createWriteStream(destPath));
-                    self.isImageSelected = false;
-                    
+                    // to update stache accordingly
+                    self.ngZone.run(() => { 
+                        self.isImageSelected = false; 
+                    });
                 } else {
                     console.log('Some other error: ', err.code);
                 }
             });
         }
     }
-    
+
+
 
     handleDrop(e) {
         var files:File = e.dataTransfer.files;
@@ -93,8 +98,6 @@ export class addImageComponent {
     }
 
     // DOM sanitizer to bypass the image URL
-    constructor(private sanitizer:DomSanitizer){}
-    
     sanitize(url:string){
         return this.sanitizer.bypassSecurityTrustUrl(url);
     }

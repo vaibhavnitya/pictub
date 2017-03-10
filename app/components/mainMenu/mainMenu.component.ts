@@ -21,6 +21,11 @@ export class mainMenuComponent {
     this.menuClick.emit('addImage');
   };
 
+  // function on click list Image
+  listImageClick() {
+    this.menuClick.emit('listImage');
+  };
+
   // function to toggle profile button click
   toggleProfileMenu () {
     this.showProfileOptions = !this.showProfileOptions;

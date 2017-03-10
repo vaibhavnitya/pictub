@@ -11,12 +11,19 @@ import { Component, OnInit } from '@angular/core';
 export class homePageComponent {
 
   showAddImage: boolean = false;
+  showListImage: boolean = false;
 
   // handle events from main menu
   mainMenuClick(option){
+    this.showAddImage = false;
+    this.showListImage = false;
+
     if(option === 'addImage') {
       this.showAddImage = true;
+    } else if (option === 'listImage') {
+      this.showListImage = true;
     }
+    
   };
 
 }

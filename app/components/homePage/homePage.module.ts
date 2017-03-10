@@ -4,9 +4,10 @@ import { homePageComponent } from './homePage.component';
 
 import { mainMenuModule } from '../mainMenu/mainMenu.module';
 import { addImageModule } from '../addImage/addImage.module';
+import { listImageModule } from '../listImage/listImage.module';
 
 @NgModule({
-  imports: [CommonModule, mainMenuModule, addImageModule],
+  imports: [CommonModule, mainMenuModule, addImageModule, listImageModule],
   declarations: [homePageComponent],
   exports: [homePageComponent]
 })

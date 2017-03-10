@@ -1,12 +1,12 @@
 <div>
     <div class="main-menu-div">
-        <div (click)="addImageClick()" class="main-options">
+        <div class="main-options" (click)="addImageClick()">
             <div>Add Image</div>
         </div>
-        <div class="main-options">
+        <div class="main-options" (click)="listImageClick()">
             <div>List Image</div>
         </div>
-        <div (click)="toggleProfileMenu()" id="profile" class="main-options">
+        <div id="profile" class="main-options" (click)="toggleProfileMenu()">
             <div class="profile">Profile</div>
         </div>
     </div>
