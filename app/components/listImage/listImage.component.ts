@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
+import * as _ from 'underscore';
 
 @Component({
     selector: 'st-list-image',
@@ -14,6 +15,8 @@ export class listImageComponent {
     constructor(private sanitizer:DomSanitizer, private ngZone: NgZone){}
 
     allFiles: Array <Object> = [];
+    totalFiles: number = 0;
+    totalSize: number = 0;
 
     ngOnInit(){
         this.getAllFiles('/images/');
@@ -32,6 +35,8 @@ export class listImageComponent {
         let imageDir: string = __dirname;
         let files: any;
         this.allFiles.length = 0;
+        this.totalFiles = 0;
+        this.totalSize = 0;
 
         imageDir = imageDir.replace(/\\/g,'/') + dir;
 
@@ -43,8 +48,10 @@ export class listImageComponent {
                             stats.path = imageDir + file;
                             stats.name = file;
                             // to update stache accordingly
-                            self.ngZone.run(() => { 
+                            self.ngZone.run(() => {
                                 self.allFiles.push(stats);
+                                self.totalFiles ++;
+                                self.totalSize += stats.size;
                             });
                         } else {
                             console.log('error in getting file stat for' + file);
@@ -55,6 +62,67 @@ export class listImageComponent {
                 console.log('error in finding files in directory');
             }
         });
+    }
+
+    /**
+     * @method sortList
+     * @param type of sort
+     * @description The parameter takes following values- 
+     * decreasingDate, increasingDate, decreasingFileSize, increasingFileSize
+     * and sorts accordingly
+    */
+    sortList(type) {
+        switch(type) {
+            case 'decreasingDate': {
+                this.allFiles = _.sortBy(this.allFiles, function(file:any) {
+                    return file.ctime.getTime(); 
+                }).reverse();
+            }
+            break;
+            case 'increasingDate': {
+                this.allFiles = _.sortBy(this.allFiles, function(file:any) {
+                    return file.ctime.getTime(); 
+                });
+            }
+            break;
+            case 'decreasingFileSize': {
+                this.allFiles = _.sortBy(this.allFiles, function(file: any) {
+                    return file.size; 
+                }).reverse();
+            }
+            break;
+            case 'increasingFileSize': {
+                this.allFiles = _.sortBy(this.allFiles, function(file: any) {
+                    return file.size; 
+                });
+            }
+            break;
+            default: {
+
+            }
+            break;
+
+        }
+    }
+
+    /**
+     * @method deleteImage
+     * @param file-object
+     * @description The parameter passed is the file object which contains
+     * the path of the file that has to be deleted
+    */
+    deleteImage(file) {
+        console.log(file);
+    }
+
+    /**
+     * @method editImage
+     * @param file-object
+     * @description The parameter passed is the file object which contains
+     * the path of the file that has to be edited
+    */
+    editImage(file) {
+
     }
 
 

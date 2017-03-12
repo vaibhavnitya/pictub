@@ -1,17 +1,18 @@
 <div class="list-images">
     <div class="list-header">
         <div class="all-files-details">
-            Total file size
+            <span class="all-files-details-span">Total files : <b> {{totalFiles}} </b></span>
+            <span class="all-files-details-span">Total size: <b> {{totalSize | byteFormat}} </b></span>
         </div>
         <div class="sort-options">
-            <div>
-                Sort by
+            <div class="sortby-div">
+                Sort by:
             </div>
-            <div>
-                <select>
+            <div class="sortby-options-div">
+                <select (change)="sortList($event.target.value)">
                     <option value="none">None</option>
-                    <option value="decreasingDate">Decreasing date</option>
-                    <option value="increasingDate">Increasing date</option>
+                    <option value="decreasingDate">Recent dates</option>
+                    <option value="increasingDate">Previous dates</option>
                     <option value="increasingFileSize">Increasing File size</option>
                     <option value="decreasingFileSize">Decreasing File size</option>
                 </select>
@@ -32,11 +33,11 @@
                         {{file.ctime}}
                     </div>
                     <div class="list-size">
-                        {{file.size}}
+                        {{file.size | byteFormat}}
                     </div>
                     <div class="list-action">
-                        <p>EDIT</p>
-                        <p>DELETE</p>
+                        <p (click)="editImage($event)">EDIT</p>
+                        <p (click)="deleteImage($event)">DELETE</p>
                     </div>
                 </div>
                 <div>

@@ -73,3 +73,15 @@ hr {
     height: 100px;
     width: 150px;
 }
+
+.sortby-div {
+    display: inline-block;
+}
+
+.sortby-options-div {
+    display: inline-block;
+}
+
+.all-files-details-span {
+    padding-left: 5%;
+}
