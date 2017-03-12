@@ -3,6 +3,10 @@
     width: 33%;
     border: 1px solid #848181;
     padding: 10px;
+    text-align: center;
+    background: -webkit-linear-gradient(#e0dede, white, #c0c1c0);
+    font-weight: 600;
+    cursor: default;
 }
 
 .main-menu-div {

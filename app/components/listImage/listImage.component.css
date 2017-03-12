@@ -85,3 +85,15 @@ hr {
 .all-files-details-span {
     padding-left: 5%;
 }
+
+.list-edit {
+    color: #4b65cc;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.list-delete {
+    color: #ca1212;
+    font-weight: 600;
+    cursor: pointer;
+}

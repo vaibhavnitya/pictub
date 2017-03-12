@@ -36,8 +36,8 @@
                         {{file.size | byteFormat}}
                     </div>
                     <div class="list-action">
-                        <p (click)="editImage(file)">EDIT</p>
-                        <p (click)="deleteImage(file)">DELETE</p>
+                        <p><span class="list-edit" (click)="editImage(file)">EDIT</span></p>
+                        <p><span class="list-delete" (click)="deleteImage(file)">DELETE</span></p>
                     </div>
                 </div>
                 <div>
