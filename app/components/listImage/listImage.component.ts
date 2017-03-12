@@ -112,7 +112,14 @@ export class listImageComponent {
      * the path of the file that has to be deleted
     */
     deleteImage(file) {
-        console.log(file);
+        var self = this;
+        fs.unlink(file.path, (err) => {
+            if (!err) {
+                 self.ngZone.run(() => {
+                    self.allFiles.splice(file, 1);
+                });
+            }
+        });
     }
 
     /**
