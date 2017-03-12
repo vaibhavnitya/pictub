@@ -17,6 +17,8 @@ export class listImageComponent {
     allFiles: Array <Object> = [];
     totalFiles: number = 0;
     totalSize: number = 0;
+    showImagesList: boolean = true;
+    showImageEdit: boolean = false;
 
     ngOnInit(){
         this.getAllFiles('/images/');
@@ -129,7 +131,8 @@ export class listImageComponent {
      * the path of the file that has to be edited
     */
     editImage(file) {
-
+        this.showImagesList = false;
+        this.showImageEdit = true;
     }
 
 

@@ -1,4 +1,4 @@
-<div class="list-images">
+<div *ngIf="showImagesList" class="list-images">
     <div class="list-header">
         <div class="all-files-details">
             <span class="all-files-details-span">Total files : <b> {{totalFiles}} </b></span>
@@ -47,3 +47,4 @@
         </ul>
     </div>
 </div>
+<st-edit-image *ngIf="showImageEdit"></st-edit-image>

@@ -2,6 +2,9 @@ import { NgModule, Pipe, PipeTransform } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { listImageComponent } from './listImage.component';
 
+import { editImageModule } from '../editImage/editImage.module';
+
+
 @Pipe({ name: 'byteFormat'})
 class ByteFormatPipe implements PipeTransform {
   transform(bytes, args) {
@@ -14,7 +17,7 @@ class ByteFormatPipe implements PipeTransform {
 }
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [CommonModule, editImageModule],
     declarations: [listImageComponent, ByteFormatPipe],
     exports: [listImageComponent]
 })
