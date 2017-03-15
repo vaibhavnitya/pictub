@@ -1,0 +1,44 @@
+.image-menu-div {
+    height: 500px;
+    padding: 15px;
+}
+
+.edit-menu-div {
+    width: 100%;
+    border: 1px solid black;
+    height: 50px;
+}
+
+.image-div {
+    width: 660px;
+    height: 425px;
+    text-align: center;
+    padding: 20px;
+    margin-left: 20%;
+}
+
+.image {
+    height: 100%;
+    width: 100%;
+}
+
+.edit-menu-div > ul {
+    padding: 5px;
+}
+
+.edit-menu-div > ul > li {
+    width: 24%;
+    text-align: center;
+    padding: 5px;
+    display: inline-block;
+}
+
+.save-button-div {
+    padding: 20px;
+    text-align: center;
+}
+
+.save-button {
+    height: 35px;
+    width: 150px;
+}

@@ -5,7 +5,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
     templateUrl: 'app/components/mainMenu/mainMenu.component.html',
     styleUrls: ['app/components/mainMenu/mainMenu.component.css'],
     host: {
-        '(document:click)': 'clickedOut($event)',
+        '(document:click)': 'clickedOut($event)'
     }
 })
 export class mainMenuComponent {

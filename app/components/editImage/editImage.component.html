@@ -1,1 +1,18 @@
-<h1>THis is the edit image component</h1>
+<div>
+    <div class="image-menu-div">
+        <div class="edit-menu-div">
+            <ul>
+                <li>contrast: <input type="number" (input)="imageContrast($event.target.value)"></li>
+                <li>brightness: <input type="number" (input)="imageBrightness($event.target.value)"></li>
+                <li>crop: <input type="number"></li>
+                <li>resize: <input type="number"></li>
+            </ul>
+        </div>
+        <div class="image-div">
+            <canvas #imageCanvas class="image"></canvas>
+        </div>
+        <div class="save-button-div">
+            <input class="save-button"type="button" value="SAVE" download="editedimage.png" (click)="saveImage($event)">
+        </div>
+    </div>
+</div>

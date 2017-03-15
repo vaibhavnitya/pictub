@@ -19,6 +19,7 @@ export class listImageComponent {
     totalSize: number = 0;
     showImagesList: boolean = true;
     showImageEdit: boolean = false;
+    editImageFile: Object = null;
 
     ngOnInit(){
         this.getAllFiles('/images/');
@@ -133,6 +134,7 @@ export class listImageComponent {
     editImage(file) {
         this.showImagesList = false;
         this.showImageEdit = true;
+        this.editImageFile = file;
     }
 
 
