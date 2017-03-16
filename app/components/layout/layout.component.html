@@ -1,2 +1,2 @@
 <st-login *ngIf="showLoginWindow" (isLoggedIn)="checkLoginStatus($event)"></st-login>
-<st-home></st-home>
+<st-home *ngIf="!showLoginWindow"></st-home>

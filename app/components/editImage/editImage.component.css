@@ -9,12 +9,26 @@
     height: 50px;
 }
 
-.image-div {
+.image-bound {
+    position: relative;
+    text-align: center;
+    margin: 20px;
     width: 660px;
     height: 425px;
-    text-align: center;
-    padding: 20px;
     margin-left: 20%;
+}
+
+.image-div {
+    position: absolute;
+    width: 660px;
+    height: 425px;
+}
+
+.image-overlay {
+    border: 5px solid green;
+    position: absolute;
+    width: 660px;
+    height: 425px;
 }
 
 .image {

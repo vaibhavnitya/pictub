@@ -7,8 +7,8 @@ import { DomSanitizer } from '@angular/platform-browser';
     templateUrl: 'app/components/editImage/editImage.component.html',
     styleUrls: ['app/components/editImage/editImage.component.css'],
     host: {
-        '(window:click)': 'handleClick($event)',
-        '(window: mousemove)': 'handleMouseMove($event)'
+        // '(window:click)': 'handleClick($event)',
+        // '(window: mousemove)': 'handleMouseMove($event)'
     }
 })
 
@@ -19,11 +19,16 @@ export class editImageComponent {
 
     @Input() imageFile: Object;
     @ViewChild('imageCanvas') canvas: ElementRef;
+    @ViewChild('imageOverlay') imageOverlay: ElementRef;
     
     imageObject: any = null;
     editedImage: Object = null;
     imageContext: any = null;
     imageData: any = null;
+    isCropping: boolean = false;
+    isResizing: boolean = false;
+    finishCrop: boolean = false;
+    selectArea: any = {};
 
     ngAfterViewInit() {
         this.displayImage(this.imageFile);
@@ -96,8 +101,33 @@ export class editImageComponent {
      * @param 
      * @description crops the image
     */
-    imageCrop() {
-        
+    imageCrop(type, value) {
+        value = value? parseInt(value) : 0;
+        var element = this.imageOverlay.nativeElement;
+        var img = this.imageObject;
+
+        if (type === 'set') {
+            this.isResizing = false;
+            this.isCropping = true;
+            this.finishCrop = true;
+        } else if (type === 'top') {
+            element.style.setProperty('top', value);
+            element.style.setProperty('height', 425 - value);
+        } else if (type === 'left') {
+            element.style.setProperty('left', value);
+            element.style.setProperty('width', 660 -value);
+        } else if (type === 'width') {
+            element.style.setProperty('width', 660 - value);
+        } else if (type === 'height') {
+            element.style.setProperty('height', 425 - value);
+        } else if (type === 'finish') {
+            var left = parseInt(element.style.left.replace('px',''));
+            var top = parseInt(element.style.top.replace('px',''));
+            var width = parseInt(element.style.width.replace('px',''));
+            var height = parseInt(element.style.height.replace('px',''));
+            this.imageContext.drawImage(img , left, top, left + width, top + height,
+             0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
+        }
     }
 
     /**
@@ -105,8 +135,19 @@ export class editImageComponent {
      * @param 
      * @description resize the image
     */
-    imageResize() {
-        
+    imageResize(type, value) {
+        value = value? parseInt(value) : 0;
+        var element = this.canvas.nativeElement.closest('.image-div');
+
+        if (type === 'set') {
+            this.isCropping = false;
+            this.finishCrop = false;
+            this.isResizing = true;
+        } else if (type === 'height') {
+            element.style.setProperty('height', 425 + value);
+        } else if (type === 'width') {
+            element.style.setProperty('width', 660 + value);
+        }
     }
 
     /**
@@ -126,25 +167,38 @@ export class editImageComponent {
      * @method handleclick
      * @param event
      */
-    handleClick(event) {
-        if (event.target.closest('.image')) {
+    /*handleClick(event) {
+        if (this.isCropSelected && event.target.closest('.image')) {
             var imageElement = event.target.closest('.image');
-            
-            console.log('a');
+            this.isdragging = !this.isdragging;
+            if (this.isdragging) {
+                this.selectArea.x = event.clientX - imageElement.offsetLeft; 
+                this.selectArea.y = event.clientY - imageElement.offsetTop;
+            } else {
+                this.selectArea.width = event.clientX - imageElement.offsetLeft;
+                this.selectArea.height = event.clientY - imageElement.offsetTop;
+            }
+        } else if (this.isCropSelected) {
+            this.isdragging = false;
         }
-    }
+    }*/
 
     /**
      * @method handleclick
      * @param event
      */
-    handleMouseMove(event) {
-        if (event.target.closest('.image')) {
+    /*handleMouseMove(event) {
+        if (this.isCropSelected && this.isdragging && event.target.closest('.image')) {
             var imageElement = event.target.closest('.image');
+            var rectWidth = event.clientX - imageElement.offsetLeft - this.selectArea.x;
+            var rectHeight = event.clientY - imageElement.offsetTop - this.selectArea.y;
             
-            console.log('a');
+            this.imageContext.rect(this.selectArea.x, this.selectArea.y, rectWidth, rectHeight);
+            this.imageContext.stroke();
+            this.imageContext.clearRect(this.selectArea.x, this.selectArea.y, rectWidth, rectHeight);
+            
         }
-    }
+    }*/
 
     // DOM sanitizer to bypass the image URL
     sanitize(url:string){

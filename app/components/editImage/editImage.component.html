@@ -4,15 +4,35 @@
             <ul>
                 <li>contrast: <input type="number" (input)="imageContrast($event.target.value)"></li>
                 <li>brightness: <input type="number" (input)="imageBrightness($event.target.value)"></li>
-                <li>crop: <input type="number"></li>
-                <li>resize: <input type="number"></li>
+                <li *ngIf="!finishCrop"><input type="button" value="CROP" (click)="imageCrop('set', null)"></li>
+                <li *ngIf="finishCrop"><input type="button" value="FINISH CROP" (click)="imageCrop('finish', null)"></li>
+                <li><input type="button" value="RESIZE" (click)="imageResize('set', null)"></li>
             </ul>
         </div>
-        <div class="image-div">
-            <canvas #imageCanvas class="image"></canvas>
+        <div *ngIf="isResizing" class="edit-menu-div">
+            <ul>
+                <li>Height: <input type="number" (input)="imageResize('height', $event.target.value)"></li>
+                <li>Width: <input type="number" (input)="imageResize('width', $event.target.value)"></li>
+            </ul>
         </div>
-        <div class="save-button-div">
+        <div *ngIf="isCropping" class="edit-menu-div">
+            <ul>
+                <li>Top: <input type="number" (input)="imageCrop('top', $event.target.value)"></li>
+                <li>Left: <input type="number" (input)="imageCrop('left', $event.target.value)"></li>
+                <li>Width: <input type="number" (input)="imageCrop('width', $event.target.value)"></li>
+                <li>Height: <input type="number" (input)="imageCrop('height', $event.target.value)"></li>
+            </ul>
+        </div>
+        <div class="image-bound">
+            <div class="image-div">
+                <canvas #imageCanvas class="image"></canvas>
+            </div>
+            <div #imageOverlay class="image-overlay">
+
+            </div>
+        </div>
+        <!--<div class="save-button-div">
             <input class="save-button"type="button" value="SAVE" download="editedimage.png" (click)="saveImage($event)">
-        </div>
+        </div>-->
     </div>
 </div>
