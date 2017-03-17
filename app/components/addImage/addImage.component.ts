@@ -38,9 +38,10 @@ export class addImageComponent {
     // function to save the images
     saveImage() {
         let file: any = this.addedImageObject;
-        let imageDir: string = __dirname;
+        let imageDir: string = window.path.resolve();
         let destPath: string;
         var self: any = this;
+        
         imageDir = imageDir.replace(/\\/g,'/') + '/images/';
         if (file && file.path) {
             destPath = imageDir + this.addedImageName;

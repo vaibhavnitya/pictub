@@ -35,7 +35,7 @@ export class listImageComponent {
     */
     getAllFiles(dir) {
         var self = this;
-        let imageDir: string = __dirname;
+        let imageDir: string = window.path.resolve();
         let files: any;
         this.allFiles.length = 0;
         this.totalFiles = 0;
