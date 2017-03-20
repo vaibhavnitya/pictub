@@ -7,7 +7,7 @@ Get the sample electronjs app from the repository: <br />
 https://github.com/electron/pictub <br />
 Follow the steps on the repository <br />
 1. Clone this repository 
-**git clone https://github.com/electron/pictub** <br />
+**git clone https://github.com/vaibhavnitya/pictub.git** <br />
 2. Go into the repository
 **cd pictub** <br />
 3. Install dependencies
