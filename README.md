@@ -20,3 +20,11 @@ Follow the steps on the repository <br />
 **npm run start** <br />
 7. Run the application in electronjs natively
 **npm run native**
+
+## To package the application for different platforms
+1. For windows
+**npm run package-win** <br />
+2. For linux
+**npm run package-linux** <br />
+3. For mac
+**npm run package-mac** <br />
